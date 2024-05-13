@@ -1,3 +1,19 @@
+<?php
+session_start();
+if (($_SESSION['level']) != 'admin') {
+    echo "<script>
+    alert('Maaf Anda Bukan sesi admin');
+    window.location.assign('../index2.php');
+    </script>";
+}
+if ($_SESSION['level'] != 'admin') {
+    echo "<script>
+    alert('Maaf Anda Belom Login');
+    window.location.assign('../index2.php');
+    </script>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +46,7 @@
                 <?php
                 $file = @$_GET['url'];
                 if (empty($file)) {
-                    echo "<h4>Selamat Datang Dihalaman Administrator<h4>";
+                    echo "<h4>Selamat Datang Dihalaman Administrator.<h4>";
                     echo "Aplikasi Pembayaran SPP Dipergunakan Untuk Mempermudah Dalam Mencatat Pembayaran Siswa / Siswi Disekolah.";
                 } else {
                     include $file . '.php ';
